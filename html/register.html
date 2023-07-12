@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    textarea {
+  resize: none;}
+/* textarea 크기 조정 못하게 함 */
+  </style>
+</head>
+<body>
+  <h1>회원가입 페이지</h1>
+  <!-- <ul>
+    <li>
+      <label for="username">사용자 이름 : </label>
+      <input type="text" placeholder="아이디를 입력하세요." id="username">
+    </li>
+    <li>
+      <label for="userpassword">사용자 비밀번호 : </label>
+      <input type="password" placeholder="비밀번호를 입력하세요." id="userpassword">
+    </li>
+  </ul> 
+  로 적용할수도 있다-->
+  <form action="/" method="post">
+    <fieldset>
+      <legend>필수사항</legend>
+      <!-- action: 사용자가 입력한 데이터를 전송받아서 처리하는 서버 파일의 경로
+           method: 사용자가 입력한 데이터를 전송하는 방식 -->
+      <table>
+        <tr>
+          <td><label for="username">사용자 이름 : </label></td>
+          <td><input type="text" placeholder="아이디를 입력하세요." id="username" required></td>
+            <!-- input의 id값을 label for에 주면 둘이 연결됨
+                 required:입력을 안하면 데이터 전송이 안되고 입력하라고 안내해줌, form태그 안에서만 동작-->
+        </tr>
+        <tr>
+          <td><label for="useremail">이메일 주소 : </label></td>
+          <td><input type="email" placeholder="이메일 주소를 입력하세요." id="useremail" required></td>
+          <!-- 이름은 동명이인이 있을수 있으므로 EMAIL추가 -->
+        </tr>
+        <tr>
+          <td><label for="userpassword">사용자 비밀번호 : </label></td>
+          <td><input type="password" placeholder="비밀번호를 입력하세요." id="userpassword" required></td>
+        </tr>
+        <tr>
+          <td><input type="submit" value="가입하기"></td>
+          <!-- submit:버튼 value:안에 들어갈 텍스트 -->
+        </tr>
+      </table>
+      <!-- table태그를 이용하여 css(flexbox)없이 입력란 정렬 가능 -->
+    </fieldset>
+    <fieldset>
+      <legend>옵션사항</legend>
+      <p>
+        <label for="address">주소 : </label>
+        <select name="address" id="address">
+          <!-- name : 서버를 위한 값
+               address(데이터 id값)으로 busan(사용자가 선택한 값)이라는 데이터를 조회 할 수 있다 -->
+          <option value="seoul">서울특별시</option>
+          <option value="busan">부산광역시</option>
+          <option value="daegu">대구광역시</option>
+        </select>
+      </p>
+      <p>
+        <span>성별 : </span>
+        <label for="male">남성</label>
+        <input type="radio" id="male" name="gender" value="남성">
+        <label for="female">여성</label>
+        <input type="radio" id="female" name="gender" value="여성">
+        <!-- radio는 선택지 중 하나만 선택하게 함 
+             name값을 동일하게 줘야 선택지 중 하나만 선택됨
+             gender(데이터 id값)으로 value(남성,여성 실제값)를 전송
+             name과 value는 서버를 위한 값 -->
+      </p>
+      <p>
+        <span>관심사 : </span>
+        <label for="html">HTML</label>
+        <input type="checkbox" id="html" name="html" value="HTML">
+        <label for="css">CSS</label>
+        <input type="checkbox" id="css" name="css" value="CSS">
+        <label for="javascript">JAVASCRIPT</label>
+        <input type="checkbox" id="javascript" name="javascript" value="JAVASCRIPT">
+        <!-- checkbox는 다중 선택 가능 (기본적으로 토글)
+             다중선택이 가능하여 name이 같으면 조회되는값이 2개가 될수 있으므로 radio와는 다르게 name값을 각각 다르게 지정 -->
+      </p>
+      <p>
+        <label for="message">인사말</label>
+        <textarea name="message" id="message" cols="30" rows="10"></textarea>
+        <!-- <textarea></textarea>사이에 공백이있으면 커서가 중간부터 시작 -->
+        <!-- cols : 한줄에 최대 입력할수 있는 text가 30자(영문기준)
+             rows : 줄의 수. 지정한 줄의 수가 넘으면 scroll 생김 -->
+      </p>
+      <p>
+        <label for="profile">프로필 사진</label>
+        <input type="file" id="profile" name="profile" accept="image/png,image/jpeg">
+        <!-- accept : 업로드 할수 있는 파일의 종류를 설정한 값으로만 추려서 보여줌 (다른 종류를 선택하지 못하는건 아님) -->
+      </p>
+      <p>
+        <label for="website">웹사이트 : </label>
+        <input type="url" id="website" name="website">
+      </p>
+      <p>
+        <label for="birth">생년월일 : </label>
+        <input type="date" id="birth" name="birth">
+      </p>
+      <p>
+        <label for="fruit-choice">좋아하는 과일 : </label>
+        <input type="text" id="fruit-choice" name="fruit-choice" list="fruit-flavors">
+        <datalist id="fruit-flavors">
+            <!-- datalist의 id값을 input의 list값이랑 똑같이 해줘야함 -->
+            <option value="apple"></option>
+            <option value="banana"></option>
+            <option value="orange"></option>
+            <option value="mango"></option>
+            <option value="watermelon"></option>
+        </datalist>
+      </p>
+    </fieldset>
+  </form>
+</body>
+</html>
